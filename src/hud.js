@@ -146,7 +146,7 @@
           <div class="wmeta" id="wmeta"></div>
 
           <div class="wfoot">
-            <span class="wsrc" id="wsrc">天气数据 · Open-Meteo</span>
+            <a class="wsrc" id="wsrc" href="https://open-meteo.com/" target="_blank" rel="noopener">天气数据 · Open-Meteo</a>
             <span class="wbtns">
               <button class="mini" id="wrefresh" title="立即刷新天气">刷新</button>
               <button class="gear" id="gear" title="设置 (Ctrl+,)">设置</button>

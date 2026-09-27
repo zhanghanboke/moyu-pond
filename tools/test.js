@@ -547,6 +547,13 @@ function check(name, ok, extra) {
     await ev(`getComputedStyle(document.querySelector('.card-main')).backdropFilter`));
   check('卡片贴在右下角', await ev(`(()=>{const r=document.getElementById('card').getBoundingClientRect();
     return r.right>innerWidth-40 && r.bottom>innerHeight-40 && r.left>innerWidth*0.5})()`));
+  // Open-Meteo 的数据按 CC BY 4.0 授权，条款明确要求"在使用数据显示的地方放一个指向它的链接"。
+  // 所以这条不是装饰——退回成纯文本就变成许可不合规了，必须由断言守住。
+  check('数据来源是**真链接**不是纯文本（CC BY 4.0 要求署名）', await ev(`(()=>{
+    const a=document.getElementById('wsrc');
+    return !!a && a.tagName==='A' && /open-meteo\\.com/.test(a.href) &&
+      !!a.closest('.card-main') && a.getBoundingClientRect().width>0})()`),
+    await ev(`(()=>{const a=document.getElementById('wsrc'); return a ? [a.tagName, a.href] : 'missing'})()`));
   check('天气导出的一组系数（光照/焦散/风/鱼活性）都在', await ev(`(()=>{const e=__moyu.station.env;
     return ['light','causticK','rippleRate','swayK','chopK','fishSpeed','fishDepth','wind','rain','fog'].every(k=>typeof e[k]==='number')})()`));
   // 注入一场大雨：雨点粒子、水面涟漪、障碍摆动都该跟着变

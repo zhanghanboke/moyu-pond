@@ -72,7 +72,8 @@ html, body {
 .wmeta { font-size: 10.5px; opacity: .62; margin-top: 8px; line-height: 1.5; }
 .wmeta.offline { color: #ffe6b8; opacity: .9; }
 .wfoot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 7px; padding-top: 7px; border-top: 1px solid rgba(255, 255, 255, .13); }
-.wsrc { font-size: 10px; opacity: .5; letter-spacing: .2px; }
+.wsrc { font-size: 10px; opacity: .5; letter-spacing: .2px; color: inherit; text-decoration: none; }
+.wsrc:hover { opacity: .85; text-decoration: underline; }
 .wbtns { display: flex; gap: 6px; }
 
 .mini {
